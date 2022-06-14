@@ -1,0 +1,29 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+div{
+  display: flex;
+  flex-direction: column;
+  border: black solid 1px;
+}
+ul{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;  
+  padding: 10px;
+  list-style: none;
+  
+  
+}
+a{
+  text-decoration: none;
+}
+ul :hover{
+  background-color: rgb(197, 62, 62);
+}
+h1{
+  text-align: center;
+  border: 1px solid black;
+}
