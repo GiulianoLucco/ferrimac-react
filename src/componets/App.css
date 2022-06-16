@@ -23,7 +23,15 @@ a{
 ul :hover{
   background-color: rgb(197, 62, 62);
 }
-h1{
+.tituloNav{
   text-align: center;
   border: 1px solid black;
 }
+
+.conteiner{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 500px;
+}
+
