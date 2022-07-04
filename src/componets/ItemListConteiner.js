@@ -1,17 +1,48 @@
-import React from "react";
-import { ItemCount } from "../ItemCount";
+import React, {useState, useEffect} from "react";
+import   ItemList   from "./ItemList";
 
-const ItemListConteiner = ({greeting})=>{
+
+
+const iProductos = [
+    {id:0, name:'Taladro', price:5000,stock:5,imagen:"../imagenes/taladro1.webp"},
+    {id:1, name:'Compresor', price:15000,stock:10,imagen:"../imagenes/compresor1.webp"},
+    {id:2, name:'Hidrolavadora', price:20000,stock:12,imagen:"../imagenes/hidro1.webp"},
+    {id:3, name:'Maquina de Soldar', price:50000,stock:15,imagen:"../imagenes/soldar1.webp"}
+]
+
+const promesa = new Promise((res,rej)=>{
+    setTimeout(()=>{
+        res(iProductos);
+    },2000)
+})
+const ItemListConteiner = ({})=>{
+
+
+
+    const [productos,setProductos] = useState([])
+    const [cargando,setCargando]=useState(false)
+
+    useEffect(()=>{
+        promesa.then((data)=>{
+            setProductos(data)
+        }).catch(()=>{
+
+        })
+        .finally(setCargando(true))
+    },[])
     
     return (
-        <div className="conteiner">
-            <h1 className="listConteiner">{greeting}</h1>
-            <ItemCount stock={10} initial={1}/>
+        <div>
+          
+            {!cargando?<h2 style={{color:"red"}}>Cargando...</h2>:<ItemList className="itemList" items = {productos}/>}
+            
+            
         </div>
         
         
     )
 
 }
+
 
 export default ItemListConteiner
