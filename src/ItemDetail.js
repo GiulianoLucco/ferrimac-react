@@ -1,23 +1,25 @@
 import React from "react";
+import { iProductos } from "./IProductos";
 
 
-const ItemDetail = ({iProductos}) =>{
+const ItemDetail = ({itemId}) =>{
   
-    
-    let producto = iProductos[0]
-
-    
+    console.log(itemId);
+    const itemDetail = (iProductos[itemId]);
+   
     return(
-        <div className="itemDetail">
-            <h1 >{producto.name}</h1>
-            <img src={producto.imagen}>
-            </img>
-            <h3>Detalles de producto: {producto.descripcion}</h3>
-            <h2>Precio: $ {producto.price}</h2>
-            <h2>Stock: {producto.stock} Unidades</h2>
-            
-        </div>
+        
+            <div className="itemDetail">
+                <h1>{itemDetail.name}</h1>
+                <img src={itemDetail.imagen}/> 
+                <h2>{itemDetail.descripcion}</h2>
+                <h3>Precio: $ {itemDetail.price}</h3>
+                <h3>Stock Disponible: {itemDetail.stock}</h3>
+                
+            </div>
+        
     )
+  
 }
 
    

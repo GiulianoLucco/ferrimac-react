@@ -19,13 +19,14 @@ ul{
   justify-content:space-around;  
   padding: 10px;
   list-style: none;
+  align-items: center;
   
   
 }
 a{
   text-decoration: none;
 }
-ul :hover{
+li :hover{
   background-color: rgb(197, 62, 62);
 }
 .tituloNav{
@@ -46,10 +47,9 @@ button{
 }
 .itemCount{
   display: flex;
-  flex-wrap: wrap;
-  
+  flex-wrap: wrap;  
   margin: 20px;
-  width: 265px;
+  width: 290px;
   height: 410px;
   justify-content: center;
   align-content: center;
@@ -69,8 +69,7 @@ button{
   
   align-self: center;
   width: 110px;
-  height: 40px;
-  
+  height: 40px;  
   justify-content: center;
 }
 
@@ -98,4 +97,8 @@ img{
 .spinners{
   display: block;
   margin: auto;
+}
+
+.categories{
+  padding-left: 40px;
 }
