@@ -13,7 +13,7 @@ export const Item = ({item}) => {
     return(
            
 
-            <div className="itemCount" key={item.id}>
+            <div className="itemCard" key={item.id}>
           
                 <h1>{item.name}</h1> 
                 <img src={item.imagen}/>

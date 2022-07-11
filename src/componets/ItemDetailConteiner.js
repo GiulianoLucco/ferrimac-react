@@ -27,7 +27,7 @@ const ItemDetailConteiner = () =>{
             setCargando(true)
             setProductos(data)
             
-        },4000)
+        },2000)
         }).catch(()=>{
 
         })
