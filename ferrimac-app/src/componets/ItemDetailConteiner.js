@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { iProductos } from "../IProductos";
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../ItemDetail";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const ItemDetailConteiner = () =>{
     const [iProductos,setProductos] = useState([])
     const [cargando,setCargando]=useState(false)
     const {itemId}  = useParams();
-   
+    console.log(itemId);
 
 
     useEffect(()=>{

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 
 
-export const ItemCount = ({itemStock, onAdd }) => {
+export const ItemCount = ({itemStock, addCart }) => {
     const Swal = require('sweetalert2')
     const [contador,setContador] = useState(1);
 
@@ -35,7 +35,7 @@ export const ItemCount = ({itemStock, onAdd }) => {
     }
     const agregarCarrito = ()=>{                    
         
-        onAdd(contador)
+        addCart(contador)
         };
 
    
@@ -49,7 +49,7 @@ export const ItemCount = ({itemStock, onAdd }) => {
                 <li><div className="contador">{contador}</div></li>
                 <li><button onClick={quitar}>Quitar</button></li>
              </ul>
-             <button className="agregarCarrito" onClick={agregarCarrito}>Agregar a Carrito</button>
+             <button className="agregarCarrito" onClick={()=>agregarCarrito()}>Agregar a Carrito</button>
         </div>
     )
 }

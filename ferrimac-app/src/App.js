@@ -4,7 +4,6 @@ import ItemListConteiner from './componets/ItemListConteiner'
 import ItemDetailConteiner from './componets/ItemDetailConteiner';
 import './componets/App.css';
 import Cart from './componets/Cart'
-import CustomProvider from "./Contexto"
 
 
 
@@ -20,15 +19,15 @@ const App = ()=> {
   return (    
     
     <BrowserRouter>   
-     <CustomProvider>
-       <Nav/>
+     
+        <Nav/>
         <Routes>
           <Route path="/" element={<ItemListConteiner />} /> 
           <Route path="/category/:categoryId" element={<ItemListConteiner />} />  
           <Route path="/item/:itemId" element={<ItemDetailConteiner/>} />
           <Route path="/cart" element={<Cart/>} />    
-        </Routes>
-      </CustomProvider>
+          </Routes>
+        
     </BrowserRouter>
  
      );
