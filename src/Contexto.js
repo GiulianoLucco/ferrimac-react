@@ -5,50 +5,47 @@ export const contexto = createContext();
 const { Provider } = contexto
  const CustomProvider = ({children}) =>{
 
-     const [products,setProducts] = useState([])
+     const [cart,setCart] = useState([])
      const [cantidad,setCantidad] = useState(0)
 
      const getQtyProducts = () =>{
         
      }
 
-    const agregarProduct = (product) =>{
+    const agregarProduct = (product,contador) =>{
+        let item = {product,contador}
+        let aux = []
         if(isLista(product.id)){
-            const aux = [...products]
-            const found = aux.find(p => p.id===product.id)
-            found.qty += product.qty
-            setProducts(aux)
+           item = cart.find((e)=>e.product.id==product.id)
+           item.contador += contador
+           aux = [...cart]
            
               
             }else{
-            setProducts([...products,product])
-            console.log(products);
+            aux = [...cart,item]
         }
-        
-        
+        setCart(aux)
+        console.log(cart);
     }
 
-    const eliminarProduct = (product) =>{
-        console.log("esta funcion te eliminar un usuario");
+    const eliminarProduct = (id) =>{
+
+        return setCart(cart.filter((e)=>e.product.id !==id))
     }
 
     const resetProduct =(product)=>{
         console.log("vaciar lista");
-        setProducts([])
+        setCart([])
     }
 
     const isLista = (id) =>{
-        products.some(product=>product.id===id)
-    
-        
-        
-        
+        return cart && cart.some(e=>e.product.id===id)
 
-    }
+         }
         
     
     return(
-        <Provider value={{products,agregarProduct,eliminarProduct,resetProduct}}> 
+        <Provider value={{cart,agregarProduct,eliminarProduct,resetProduct}}> 
              {children}
         </Provider>
       

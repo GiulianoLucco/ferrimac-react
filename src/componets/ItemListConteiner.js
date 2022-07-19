@@ -3,6 +3,9 @@ import ItemList from "./ItemList";
 import { iProductos } from "../IProductos"
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
+import { db } from "../firebase/firebase"
+import { getDocs,collection,query,where } from "firebase/firestore"
+import { registerStyles } from "@emotion/utils";
 
 
 const promesa = new Promise((res, rej) => {
@@ -21,7 +24,26 @@ const ItemListConteiner = () => {
  
 
     useEffect(() => {
-      
+        const productCollection = collection(db,'productos')
+        getDocs(productCollection)
+        .then(result=>{
+           const lista = result.docs.map(doc=>{
+              
+            return{
+                id:doc.id,
+                ...doc.data(),
+
+            }    
+                  
+            })
+            setProductos(lista)
+        })
+
+
+
+
+
+       
         promesa
             .then((data) => {
 

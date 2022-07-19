@@ -12,8 +12,8 @@ const ItemDetail = ({itemId}) =>{
 
     const onAdd = (contador) => {
         alert(`se han agregado ${contador} al carrito`)
-        const product = {...itemDetail,qty:contador}
-        agregarProduct(product)
+
+        agregarProduct(itemDetail,contador)
 
     }
    
