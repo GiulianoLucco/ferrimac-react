@@ -12,18 +12,19 @@ const Cart = () => {
 
     const borrarArt = (itemCart) =>{
         alert(`se elimino el producto numero ${itemCart.product.name},${itemCart.product.id}` )
-       
-        eliminarProducto(itemCart.product.id)
+       const idCart = itemCart.product.id
+       eliminarProduct(idCart)
+        console.log(idCart);
         
     }
 
-    const {eliminarProducto,resetProduct,cart} = useContext(contexto)
+    const {eliminarProduct,resetProduct,cart} = useContext(contexto)
     
        
         if(cart.length===0){
 
             return(
-                <><h1>No hay productos en el Carrito  </h1><Link to={"/"}>Agregar Articulos de </Link></>
+                <><div className="carritoVacio"><h1>No hay productos en el Carrito  </h1><Link to={"/"}>Agregar Articulos de AQUI!!! </Link></div></>
                 )
 
             }

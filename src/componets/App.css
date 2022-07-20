@@ -53,6 +53,7 @@ button{
   height: 410px;
   justify-content: center;
   align-content: center;
+  align-items: center;
 }
 
 .itemCount{
@@ -76,7 +77,7 @@ button{
   padding: 10px;
   justify-content:space-between;
   align-items: center;
-  width: 200px;
+  width: 100px;
 
 }
 
@@ -128,4 +129,26 @@ img{
 button{
   width: 73px;
   height: 30px;
+}
+
+.itemCart{
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+}
+
+.numCart{
+  text-align: center;
+}
+
+.borrarTodo{
+  margin: 10px;
+  align-self: center;
+}
+
+.carritoVacio{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
 }

@@ -5,7 +5,7 @@ import React from "react";
     const btnborrar=()=>{
         borrarArt(itemCart)
     }
-    console.log(itemCart.contador);
+   
     return(
         
         <div  key={itemCart.product.id} >

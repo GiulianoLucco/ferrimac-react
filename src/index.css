@@ -12,17 +12,3 @@ code {
     monospace;
 }
 
-.itemCart{
-  display: flex;
-  justify-content: space-around;
-  height: auto;
-}
-
-.numCart{
-  text-align: center;
-}
-
-.borrarTodo{
-  margin: 10px;
-  align-self: center;
-}
