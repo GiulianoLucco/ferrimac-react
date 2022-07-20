@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import ItemDetail from "./componets/ItemDetail";
+
 
 export const contexto = createContext();
 const { Provider } = contexto
@@ -9,8 +9,15 @@ const { Provider } = contexto
      const [cantidad,setCantidad] = useState(0)
 
      const getQtyProducts = () =>{
+        let qty = 0
+        cart.forEach(cart => {
+            qty += cart.contador
+            
+        });
+        return qty
         
      }
+     
 
     const agregarProduct = (product,contador) =>{
         let item = {product,contador}
@@ -45,7 +52,7 @@ const { Provider } = contexto
         
     
     return(
-        <Provider value={{cart,agregarProduct,eliminarProduct,resetProduct}}> 
+        <Provider value={{cart,agregarProduct,eliminarProduct,resetProduct,getQtyProducts}}> 
              {children}
         </Provider>
       
