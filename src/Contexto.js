@@ -16,8 +16,12 @@ const { Provider } = contexto
         });
         return qty
         
-     }
-     
+     }  
+
+     const PriceTotal = () => {
+        return cart.reduce((acum, i) => acum + i.contador * i.product.price, 0)
+      }
+  
 
     const agregarProduct = (product,contador) =>{
         let item = {product,contador}
@@ -52,7 +56,7 @@ const { Provider } = contexto
         
     
     return(
-        <Provider value={{cart,agregarProduct,eliminarProduct,resetProduct,getQtyProducts}}> 
+        <Provider value={{cart,agregarProduct,eliminarProduct,resetProduct,getQtyProducts,PriceTotal}}> 
              {children}
         </Provider>
       

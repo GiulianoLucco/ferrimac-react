@@ -75,7 +75,7 @@ button{
 .btnCard{
   display: flex;
   padding: 10px;
-  justify-content:space-between;
+  justify-content:center;
   align-items: center;
   width: 100px;
 
@@ -151,4 +151,8 @@ button{
   flex-wrap: wrap;
   align-content: center;
   align-items: center;
+}
+
+.totalCompra{
+  text-align: center;
 }

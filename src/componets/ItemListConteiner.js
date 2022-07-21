@@ -5,7 +5,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebase"
 import { getDocs,collection,query,where } from "firebase/firestore"
-import { registerStyles } from "@emotion/utils";
+
 
 
 const promesa = new Promise((res, rej) => {
@@ -13,8 +13,6 @@ const promesa = new Promise((res, rej) => {
     res(iProductos);
 
 })
-
-
 
 const ItemListConteiner = () => {
 
