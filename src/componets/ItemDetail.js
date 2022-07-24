@@ -1,5 +1,4 @@
 import React,{useContext} from "react";
-import { iProductos } from "../IProductos";
 import { ItemCount } from "./ItemCount";
 import { contexto } from "../Contexto";
 
@@ -7,25 +6,25 @@ import { contexto } from "../Contexto";
 const ItemDetail = ({itemId}) =>{
   
     
-    const itemDetail = (iProductos[itemId]);
+   
     const {agregarProduct} = useContext(contexto)
 
     const onAdd = (contador) => {
         alert(`se han agregado ${contador} al carrito`)
 
-        agregarProduct(itemDetail,contador)
+        agregarProduct(itemId,contador)
 
     }
    
     return(
         
-            <div key={itemDetail.id} className="itemDetail">
-                <h1>{itemDetail.name}</h1>
-                <img src={itemDetail.imagen} alt="imagen producto"/> 
-                <h2>{itemDetail.descripcion}</h2>
-                <h3>Precio: $ {itemDetail.price}</h3>
-                <h3>Stock Disponible: {itemDetail.stock}</h3>
-                <ItemCount itemStock={itemDetail.stock} onAdd={onAdd}/>
+            <div key={itemId.id} className="itemDetail">
+                <h1>{itemId.name}</h1>
+                <img src={itemId.imagen} alt="imagen producto"/> 
+                <h2>{itemId.descripcion}</h2>
+                <h3>Precio: $ {itemId.price}</h3>
+                <h3>Stock Disponible: {itemId.stock}</h3>
+                <ItemCount itemStock={itemId.stock} onAdd={onAdd}/>
                 
             </div>
         

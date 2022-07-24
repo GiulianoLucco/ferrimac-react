@@ -1,16 +1,10 @@
 import React,{useState, useEffect} from "react";
-import { iProductos } from "../IProductos";
 import ItemDetail from "./ItemDetail";
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
+import { db } from "../firebase/firebase";
+import {getDoc,collection,doc}  from "firebase/firestore"
 
-
-
-const promesa = new Promise((res,rej)=>{
-   
-    res(iProductos);
-
-})
 
 const ItemDetailConteiner = () =>{
 
@@ -21,11 +15,19 @@ const ItemDetailConteiner = () =>{
 
 
     useEffect(()=>{
-        
-        promesa.then((data)=>{
+        const productCollection = collection(db,'productos')
+        const refDoc= doc(productCollection,itemId)
+        getDoc(refDoc)
+        .then((result)=>{
+            const producto ={
+                id:result.id,
+                ...result.data()
+            }
+            
             setTimeout(()=>{
             setCargando(true)
-            setProductos(data)
+            setProductos(producto)
+            console.log(producto);
             
         },2000)
         }).catch(()=>{
@@ -36,7 +38,7 @@ const ItemDetailConteiner = () =>{
     
     return  (
             <div className="ItemDetail">
-            {!cargando?<ClipLoader className="spinners"/>:<ItemDetail className="itemList" itemId={itemId} />}
+            {!cargando?<ClipLoader className="spinners"/>:<ItemDetail className="itemList" itemId={iProductos} />}
             </div>
         )
 }

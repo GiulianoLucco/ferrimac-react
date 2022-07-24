@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ItemList from "./ItemList";
-import { iProductos } from "../IProductos"
 import ClipLoader from "react-spinners/ClipLoader";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase/firebase"
@@ -8,11 +7,7 @@ import { getDocs,collection,query,where } from "firebase/firestore"
 
 
 
-const promesa = new Promise((res, rej) => {
 
-    res(iProductos);
-
-})
 
 const ItemListConteiner = () => {
 
@@ -20,10 +15,13 @@ const ItemListConteiner = () => {
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(false)
  
-
+    console.log(categoryId);
     useEffect(() => {
+        
         const productCollection = collection(db,'productos')
-        getDocs(productCollection)
+        const q =query(productCollection, where ('category','==',`${categoryId}`))
+        
+        getDocs(categoryId? q : productCollection)
         .then(result=>{
            const lista = result.docs.map(doc=>{
               
@@ -34,34 +32,21 @@ const ItemListConteiner = () => {
             }    
                   
             })
-            setProductos(lista)
-            console.log(lista);
-        })
+            setTimeout(()=>{
+                setCargando(true)
+                setProductos(lista)
+                
+                
+            },2000)
+            }).catch(()=>{
 
-
-
-
-
+        }) 
        
-        promesa
-            .then((data) => {
-
-                setTimeout(() => {
-                    const productoCategory = data.filter(pCategory => pCategory.category === categoryId)
-                    const filtro = categoryId ? productoCategory : data
-                    setCargando(true)
-                    setProductos(filtro)
-                }, 2000)
-            }).catch(() => {
-
-            })
-
-
     }, [categoryId])
 
     return (
         <div>
-            {!cargando ? <ClipLoader className="spinners" /> : <ItemList className="itemList" items={productos} />}
+            { !cargando?<ClipLoader className="spinners"/>:<ItemList className="itemList" items={productos} />}
         </div>
 
 
