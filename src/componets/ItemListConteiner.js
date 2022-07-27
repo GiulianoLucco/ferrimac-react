@@ -15,7 +15,6 @@ const ItemListConteiner = () => {
     const [productos, setProductos] = useState([])
     const [cargando, setCargando] = useState(false)
  
-    console.log(categoryId);
     useEffect(() => {
         
         const productCollection = collection(db,'productos')
@@ -46,7 +45,7 @@ const ItemListConteiner = () => {
 
     return (
         <div>
-            { !cargando?<ClipLoader className="spinners"/>:<ItemList className="itemList" items={productos} />}
+            { !cargando?<ClipLoader className="spinners"/>:<ItemList  className="itemList" items={productos} />}
         </div>
 
 

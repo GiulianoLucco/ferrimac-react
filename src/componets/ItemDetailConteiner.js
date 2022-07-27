@@ -26,9 +26,7 @@ const ItemDetailConteiner = () =>{
             
             setTimeout(()=>{
             setCargando(true)
-            setProductos(producto)
-            console.log(producto);
-            
+            setProductos(producto)            
         },2000)
         }).catch(()=>{
 

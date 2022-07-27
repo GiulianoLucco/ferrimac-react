@@ -5,8 +5,10 @@ export const contexto = createContext();
 const { Provider } = contexto
  const CustomProvider = ({children}) =>{
 
+
+    
      const [cart,setCart] = useState([])
-     const [cantidad,setCantidad] = useState(0)
+     
 
      const getQtyProducts = () =>{
         let qty = 0
@@ -36,7 +38,7 @@ const { Provider } = contexto
             aux = [...cart,item]
         }
         setCart(aux)
-        console.log(cart);
+      
     }
 
     const eliminarProduct = (id) =>{
@@ -45,7 +47,6 @@ const { Provider } = contexto
     }
 
     const resetProduct =(product)=>{
-        console.log("vaciar lista");
         setCart([])
     }
 

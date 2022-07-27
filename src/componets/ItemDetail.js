@@ -4,13 +4,13 @@ import { contexto } from "../Contexto";
 
 
 const ItemDetail = ({itemId}) =>{
-  
+    const Swal = require('sweetalert2')
     
    
     const {agregarProduct} = useContext(contexto)
 
     const onAdd = (contador) => {
-        alert(`se han agregado ${contador} al carrito`)
+        Swal.fire(`Se agregaron ${contador} producto/s al carrito `)
 
         agregarProduct(itemId,contador)
 
