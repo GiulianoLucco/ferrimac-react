@@ -16,8 +16,8 @@ const Cart = () => {
     const [finalizar,setFinalizar] = useState(false)
     
 
-    const finalizarCompra = (itemCart)=>{
-        console.log('finalizarCompra');
+    const finalizarCompra = ()=>{
+        
         setFinalizar(true)       
 
     }
@@ -55,7 +55,7 @@ const Cart = () => {
         <h1 className="totalCompra">Total de la compra:$ {PriceTotal()}</h1>
         <button className="borrarTodo" onClick={clear}>Borrar todo</button>
         <button className="borrarTodo" onClick={finalizarCompra}>Finalizar Compra</button>
-        {!finalizar?"":<FormCompra  items={cart}/>}
+        {!finalizar?"":<FormCompra />}
         
         
         
