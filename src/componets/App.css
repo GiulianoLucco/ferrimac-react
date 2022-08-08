@@ -46,6 +46,7 @@ li :hover{
 
 button{
   width: 55px;
+  margin: 5px;
 }
 .itemCard{
   display: flex;
@@ -186,5 +187,9 @@ button{
 }
 
 .h1Formulario{
+  text-align: center;
+}
+
+h1{
   text-align: center;
 }

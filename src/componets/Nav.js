@@ -18,12 +18,12 @@ const Nav = ()=>{
         <div>
             <h1 className="tituloNav">Ferrimac Ferreteria Industrial</h1>
         <ul>    
-            <li><Link to={"/"}><ConstructionIcon /></Link> </li>              
-            <li><Link to={"/"}><h2>Inicio</h2></Link></li>
+            <li><Link key="0" to={"/"}><ConstructionIcon /></Link> </li>              
+            <li><Link key="1" to={"/"}><h2>Inicio</h2></Link></li>
                 <ul>
-                    {categories.map((category)=><li className="categories"><h3><Link key={category.id} to={category.route}>{category.name}</Link></h3></li>)}
+                    {categories.map((category,index)=><li key={index} className="categories"><h3><Link  to={category.route}>{category.name}</Link></h3></li>)}
                 </ul>
-           <li><Link to={"/cart"}><CarWidget/></Link></li>
+           <li><Link key="2" to={"/cart"}><CarWidget/></Link></li>
         </ul>
         </div>
         

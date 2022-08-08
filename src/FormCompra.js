@@ -4,44 +4,59 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { contexto } from "./Contexto";
 
 
+
 const FormCompra = () => {
  
-  const {cart,PriceTotal} = useContext(contexto)
+  const {cart,PriceTotal,resetProduct} = useContext(contexto)
   const [clientes, setClientes] =useState([]);
   const [finalizar,setFinalizar] = useState(false)
   const [idVentas,SetidVentas]=useState()
-  const continuar = (e) => {
-    
-    setClientes({
-      ...clientes,
-      [e.target.name] : e.target.value
-    })
-
   
 
+  const continuar = (e) => {
+   
+      setClientes({
+        ...clientes,
+        [e.target.name] : e.target.value
+      })
+     
+    }
+    
+    
+   
+
+
+const borrar = () =>{
+  setTimeout(()=>{
+      resetProduct()
+},6000)
 }
 const enviarDatos = (e) =>{
-  e.preventDefault()
-  setFinalizar(true)
-  const ventasCollection = collection(db, 'ventas');
-        addDoc(ventasCollection,{
-            clientes,
-            items : {cart},
-            date : serverTimestamp(),
-            total : PriceTotal(),
+  e.preventDefault()   
+    setFinalizar(true)   
+  
+    const ventasCollection = collection(db, 'ventas');
+          addDoc(ventasCollection,{
+              clientes,
+              items : {cart},
+              date : serverTimestamp(),
+              total : PriceTotal(),
+             
+          }).then((result)=>{
+           const idVentas= result.id
+           const fechaCompra = result.id.date
            
-        }).then((result)=>{
-         const idVentas= result.id
-         const fechaCompra = result.id.date
-         
-          SetidVentas(idVentas);
-          console.log(fechaCompra);
-         
-        })
+            SetidVentas(idVentas);
+            console.log(fechaCompra);
+           
+          })
+          .finally(borrar())
+          
+ 
         
         
   }
-
+  
   
 
   if(!finalizar){return (
@@ -53,7 +68,9 @@ const enviarDatos = (e) =>{
       <input
         type="text"
         className="form-control"
-        name="nombre"
+        name="nombre" required
+        placeholder="Giuliano Nicolas"
+        
         onChange={continuar}
       />
     </div>
@@ -62,13 +79,17 @@ const enviarDatos = (e) =>{
       <input
         type="text"
         className="form-control"
-        name="apellido"
+        name="apellido" required
+        placeholder="Lucco"
+           
+        
         onChange={continuar}
       />
     </div>
     <div className="mb-3">
       <label className="form-label">Ingrese Direccion de Email</label>
-      <input type="text" className="form-control" name="email"  onChange={continuar} />
+      <input type="email" className="form-control" name="email" required placeholder="hola@gmail.com"
+     onChange={continuar} />
     </div>
 
     <button type="submit">Continuar</button>

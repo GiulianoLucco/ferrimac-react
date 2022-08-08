@@ -33,9 +33,19 @@ export const ItemCount = ({itemStock, onAdd }) => {
         }
         
     }
-    const agregarCarrito = ()=>{                    
+    const agregarCarrito = ()=>{   
+        if(contador!=0){
+            onAdd(contador)}
+            else{(Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ingrese una cantidad correcta por favor',
+                
+              }))
+
+            }                 
         
-        onAdd(contador)
+        
         };
 
    
